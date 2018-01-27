@@ -19,6 +19,25 @@ input {
   width: 270px;
 }
 
+th, td{
+  border: 1px solid #5d5d5d;
+  border-collapse: collapse;
+  padding: 2px 5px;
+}
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+tr:hover {background-color: #ddd;}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4d4d4d;
+    color: white;
+}
+
 .SubmitButton {
   height: 40px;
   border-radius: 4px;
@@ -58,4 +77,9 @@ input {
 
 .CompensationTable {
   margin-bottom: 30px;
+}
+
+.PayeeInfo {
+  display: inline-block;
+  width: 130px;
 }

@@ -6,9 +6,10 @@ from django.db import models
 # Create your models here.
 class CompPackage(models.Model):
     name = models.CharField(max_length=200)
+    dob = models.DateField(blank=True, null=True)
     tax_id = models.CharField(max_length=200)
     land_area = models.DecimalField(max_digits=4, decimal_places=2)
-    num_family = models.IntegerField()
+    num_family = models.IntegerField(blank=True, null=True)
     is_verified = models.BooleanField(default=False)
     is_wrong = models.BooleanField(default=False)
 

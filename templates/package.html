@@ -7,21 +7,22 @@
 <body>
   <div class="Content">
     <h1>Compensation Payment</h1>
-    <p>Name: {{ package.name }}</p>
-    <p>ID: {{ package.tax_id }}</p>
-    <p>Farm Size: {{ package.land_area }} hectares</p>
-    <p>Family Members: {{ package.num_family }}</p>
+    <p><span class="PayeeInfo">Name: </span>{{ package.name }}</p>
+    <p><span class="PayeeInfo">Date of Birth: </span>{{ package.dob }}</p>
+    <p><span class="PayeeInfo">ID: </span>{{ package.tax_id }}</p>
+    <p><span class="PayeeInfo">Farm Size: </span>{{ package.land_area }} hectares</p>
+    <p><span class="PayeeInfo">Family Members: </span>{{ package.num_family }}</p>
     <p><strong>Payments: </strong></p>
 
     <table class="CompensationTable">
       <thead>
         <tr>
-          <td>Date</td>
-          <td>Lost Harvest</td>
-          <td>Food Security</td>
-          <td>Improvements</td>
-          <td>Final Compensation</td>
-          <td>Total</td>
+          <th>Date</th>
+          <th>Lost Harvest</th>
+          <th>Food Security</th>
+          <th>Improvements</th>
+          <th>Final Compensation</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
