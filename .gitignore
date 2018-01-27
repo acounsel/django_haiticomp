@@ -1,0 +1,8 @@
+*.pyc
+local_settings.py
+db.sqlite3
+dump.rdb
+.DS_Store
+venv/
+.sass-cache
+.cache

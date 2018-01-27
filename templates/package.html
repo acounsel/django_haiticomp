@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='en'>
+{% load staticfiles %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+  <div class="Content">
+    <h1>Compensation Payment</h1>
+    <p>Name: {{ package.name }}</p>
+    <p>ID: {{ package.tax_id }}</p>
+    <p>Farm Size: {{ package.land_area }} hectares</p>
+    <p>Family Members: {{ package.num_family }}</p>
+    <p><strong>Payments: </strong></p>
+
+    <table class="CompensationTable">
+      <thead>
+        <tr>
+          <td>Date</td>
+          <td>Lost Harvest</td>
+          <td>Food Security</td>
+          <td>Improvements</td>
+          <td>Final Compensation</td>
+          <td>Total</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for key, value in payment_dict.iteritems %}
+         <tr>
+          <td>{{ key }}</td>
+          <td>{% for payment in value %}{% if payment.payment_type == 'lost_harvest' %}{{ payment.value }}{% endif %}{% endfor %}</td>
+          <td>{% for payment in value %}{% if payment.payment_type == 'food_security' %}{{ payment.value }}{% endif %}{% endfor %}</td>
+          <td>{% for payment in value %}{% if payment.payment_type == 'improvements' %}{{ payment.value }}{% endif %}{% endfor %}</td>
+          <td>{% for payment in value %}{% if payment.payment_type == 'final_compensation' %}{{ payment.value }}{% endif %}{% endfor %}</td>
+          <td>Total</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+
+    </table>
+    <a href="{% url 'verify-compensation' package_id=package.id %}" class="SubmitButton">Correct</a>
+    <a href="{% url 'wrong-compensation' package_id=package.id %}" class="SubmitButton SubmitButton-red">Incorrect</a>
+  </div>
+</body>
+</html>
+
+

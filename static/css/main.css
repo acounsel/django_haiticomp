@@ -1,0 +1,61 @@
+body {
+  background-color: #fafafa;
+  padding: 50px; 
+}
+
+p {
+  color: #5D5D5D;
+}
+
+h1 {
+  color: #5D5D5D;
+  text-transform: uppercase;
+}
+
+input {
+  height: 30px;
+  font-size: 18px;
+  line-height: 20px;
+  width: 270px;
+}
+
+.SubmitButton {
+  height: 40px;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  width: 276px;
+  text-transform: uppercase;
+  background-color: #3DBD89;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 40px;
+  text-align: center;
+  transition: opacity 0.2s;
+}
+  .SubmitButton-red {
+    background-color: #F78181;
+  }
+  .SubmitButton:hover {
+    opacity: 0.9;
+  }
+
+.Content {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 10px 30px 100px 30px;
+}
+
+.Error {
+  background-color: #F78181;
+  color: #FFFFFF;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+}
+
+.CompensationTable {
+  margin-bottom: 30px;
+}
