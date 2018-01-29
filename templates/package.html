@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
+  <h1>Compensation Payment</h1>
   <p><span class="PayeeInfo">Name: </span>{{ package.name }}</p>
   <p><span class="PayeeInfo">Date of Birth: </span>{{ package.dob }}</p>
   <p><span class="PayeeInfo">ID: </span>{{ package.tax_id }}</p>
-  <p><span class="PayeeInfo">Farm Size: </span>{{ package.land_area }} hectares</p>
-  <p><span class="PayeeInfo">Family Members: </span>{{ package.num_family }}</p>
+  <p><span class="PayeeInfo">Farm Size: </span><span class="FormulaVariable">{{ package.land_area }}</span> hectares</p>
+  <p><span class="PayeeInfo">Family Members: </span><span class="FormulaVariable">{{ package.num_family }}</span></p>
   <div class="ExpectedPayments">
     <p><strong>Expected Payments</strong></p>
   
