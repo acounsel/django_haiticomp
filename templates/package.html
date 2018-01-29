@@ -6,7 +6,7 @@
   <p><span class="PayeeInfo">Date of Birth: </span>{{ package.dob }}</p>
   <p><span class="PayeeInfo">ID: </span>{{ package.tax_id }}</p>
   <p><span class="PayeeInfo">Farm Size: </span><span class="FormulaVariable">{{ package.land_area }}</span> hectares</p>
-  <p><span class="PayeeInfo">Family Members: </span><span class="FormulaVariable">{{ package.num_family }}</span></p>
+  <p><span class="PayeeInfo">Family Members: </span><span class="FormulaVariable-blue">{{ package.num_family }}</span></p>
   <div class="ExpectedPayments">
     <p><strong>Expected Payments</strong></p>
   
@@ -14,7 +14,7 @@
      <p>Loss of Harvest: $1,450 x <span class="FormulaVariable">{{ package.land_area }}</span> hectares = <strong>$ {{ package.get_loss_of_harvest_compensation|intcomma }}</strong></p>
     </div>
     <div class="Formula"> 
-      <p>Food Security: $80 x <span class="FormulaVariable">{{ package.num_family }}</span> family members = <strong>$ {{ package.get_num_family_compensation|intcomma }}</strong></p>
+      <p>Food Security: $80 x <span class="FormulaVariable-blue">{{ package.num_family }}</span> family members = <strong>$ {{ package.get_num_family_compensation|intcomma }}</strong></p>
     </div>
     <div class="Formula"> 
       <p>Final Compensation: $1,450 x <span class="FormulaVariable">{{ package.land_area }}</span> hectares x 5 years x 1.1725 inflation adjustment = <strong>$ {{ package.get_final_compensation|intcomma }}</strong></p>

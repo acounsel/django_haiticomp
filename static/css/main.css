@@ -89,14 +89,18 @@ th {
 .Formula {
   margin-left: 20px;
 }
-
 .FormulaVariable {
   font-size: 20px;
   font-weight: 600;
   color: #3DBD89;
-}
-  .FormulaVariable.black {
-    color: #000000;
+ } 
+  .FormulaVariable-blue {
+    font-size: 20px;
+    font-weight: 600;
+    color: #809fff;
+  }
+    .FormulaVariable.black {
+      color: #000000;
   }
 
 .PayeeInfo {
