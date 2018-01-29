@@ -19,11 +19,11 @@
       {% else %}
         <h1>Gade peman konpansasyon ou</h1>
       {% endif %}
-        {% if request.resolver_match.url_name == 'farmer-input' %}
-          <a href="{% url request.resolver_match.url_name language=other_language %}">{{ other_language }}</a>
-        {% else %}
-          <a href="{% url request.resolver_match.url_name package_id=package.id language=other_language %}">{{ other_language }}</a>
-        {% endif %}
+      <div class="LanguageToggle">
+        <a href="{% url request.resolver_match.url_name package_id=package.id language=other_language %}">{{ other_language|title }}</a> | <strong>{{ language|title }}</strong>
+
+      </div>
+
     </div>
     {% block content %}
     {% endblock %}
