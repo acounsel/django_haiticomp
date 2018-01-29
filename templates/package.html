@@ -1,48 +1,66 @@
-<!DOCTYPE html>
-<html lang='en'>
-{% load staticfiles %}
-<head>
-  <link rel="stylesheet" href="{% static 'css/main.css' %}">
-</head>
-<body>
-  <div class="Content">
-    <h1>Compensation Payment</h1>
-    <p><span class="PayeeInfo">Name: </span>{{ package.name }}</p>
-    <p><span class="PayeeInfo">Date of Birth: </span>{{ package.dob }}</p>
-    <p><span class="PayeeInfo">ID: </span>{{ package.tax_id }}</p>
-    <p><span class="PayeeInfo">Farm Size: </span>{{ package.land_area }} hectares</p>
-    <p><span class="PayeeInfo">Family Members: </span>{{ package.num_family }}</p>
-    <p><strong>Payments: </strong></p>
-
-    <table class="CompensationTable">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Lost Harvest</th>
-          <th>Food Security</th>
-          <th>Improvements</th>
-          <th>Final Compensation</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for key, value in payment_dict.iteritems %}
-         <tr>
-          <td>{{ key }}</td>
-          <td>{% for payment in value %}{% if payment.payment_type == 'lost_harvest' %}{{ payment.value }}{% endif %}{% endfor %}</td>
-          <td>{% for payment in value %}{% if payment.payment_type == 'food_security' %}{{ payment.value }}{% endif %}{% endfor %}</td>
-          <td>{% for payment in value %}{% if payment.payment_type == 'improvements' %}{{ payment.value }}{% endif %}{% endfor %}</td>
-          <td>{% for payment in value %}{% if payment.payment_type == 'final_compensation' %}{{ payment.value }}{% endif %}{% endfor %}</td>
-          <td>Total</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-
-    </table>
-    <a href="{% url 'verify-compensation' package_id=package.id %}" class="SubmitButton">Correct</a>
-    <a href="{% url 'wrong-compensation' package_id=package.id %}" class="SubmitButton SubmitButton-red">Incorrect</a>
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+  <h1>Compensation Payment</h1>
+  <p><span class="PayeeInfo">Name: </span>{{ package.name }}</p>
+  <p><span class="PayeeInfo">Date of Birth: </span>{{ package.dob }}</p>
+  <p><span class="PayeeInfo">ID: </span>{{ package.tax_id }}</p>
+  <p><span class="PayeeInfo">Farm Size: </span>{{ package.land_area }} hectares</p>
+  <p><span class="PayeeInfo">Family Members: </span>{{ package.num_family }}</p>
+  <div class="ExpectedPayments">
+    <p><strong>Expected Payments</strong></p>
+  
+    <div class="Formula"> 
+     <p>Loss of Harvest: $1,450 x <span class="FormulaVariable">{{ package.land_area }}</span> hectares = <strong>$ {{ package.get_loss_of_harvest_compensation|intcomma }}</strong></p>
+    </div>
+    <div class="Formula"> 
+      <p>Food Security: $80 x <span class="FormulaVariable">{{ package.num_family }}</span> family members = <strong>$ {{ package.get_num_family_compensation|intcomma }}</strong></p>
+    </div>
+    <div class="Formula"> 
+      <p>Final Compensation: $1,450 x <span class="FormulaVariable">{{ package.land_area }}</span> hectares x 5 years x 1.1725 inflation adjustment = <strong>$ {{ package.get_final_compensation|intcomma }}</strong></p>
+    </div>
   </div>
-</body>
-</html>
+  <p><strong>Bank Payments: </strong></p>
 
+  <table class="CompensationTable FooTable">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th data-breakpoints="xs">Lost Harvest</th>
+        <th data-breakpoints="xs">Food Security</th>
+        <th data-breakpoints="xs">Improvements</th>
+        <th data-breakpoints="xs">Final Compensation</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for key, value in payment_dict.iteritems %}
+       <tr>
+        <td>{{ key }}</td>
+        <td>{% for payment in value.payments %}{% if payment.payment_type == 'lost_harvest' %}$ {{ payment.value|intcomma }}{% endif %}{% endfor %}</td>
+        <td>{% for payment in value.payments %}{% if payment.payment_type == 'food_security' %}$ {{ payment.value|intcomma }}{% endif %}{% endfor %}</td>
+        <td>{% for payment in value.payments %}{% if payment.payment_type == 'improvements' %}$ {{ payment.value|intcomma }}{% endif %}{% endfor %}</td>
+        <td>{% for payment in value.payments %}{% if payment.payment_type == 'final_compensation' %}$ {{ payment.value|intcomma }}{% endif %}{% endfor %}</td>
+        <td>$ {{ value.total|intcomma }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+
+  </table>
+  <a href="{% url 'verify-compensation' package_id=package.id %}" class="SubmitButton">Correct</a>
+  <a href="{% url 'wrong-compensation' package_id=package.id %}" class="SubmitButton SubmitButton-red">Incorrect</a>
+  <div class="Restart">
+    <a href="{% url 'farmer-input' %}">Restart</a>
+  </div>
+{% endblock %}
+
+{% block javascript %}
+  <script type="text/javascript">
+    jQuery(function($){
+      $(".FooTable").each(function() {
+        $( this ).footable();
+      }); 
+    });
+  </script>
+{% endblock %}
 

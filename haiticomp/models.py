@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from decimal import Decimal
 from django.db import models
 
 # Create your models here.
@@ -21,10 +22,30 @@ class CompPackage(models.Model):
         payments = self.payment_set.order_by('date')
         for payment in payments:
             if payment.date in payment_dict:
-                payment_dict[payment.date].append(payment)
+                payment_dict[payment.date]['payments'].append(payment)
             else:
-                payment_dict[payment.date] = [payment,]
+                payment_dict[payment.date] = {
+                    'payments': [payment,],
+                }
+        for key, value in payment_dict.iteritems():
+            print(value)
+            total = 0
+            for payment in value['payments']:
+                total += payment.value
+                value['total'] = total
         return payment_dict
+
+    def get_loss_of_harvest_compensation(self):
+        comp = 1450 * self.land_area
+        return comp
+
+    def get_num_family_compensation(self):
+        comp = 80 * self.num_family
+        return comp
+
+    def get_final_compensation(self):
+        comp = 1450 * self.land_area * 5 * Decimal(1.1725)
+        return round(comp, 2)
 
 class Payment(models.Model):
     LOST_HARVEST = 'lost_harvest'
