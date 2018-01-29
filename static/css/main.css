@@ -113,6 +113,12 @@ th {
   margin-top: 30px;
 }
 
+.FlexBox {
+  display: flex; display: -webkit-flex; 
+  justify-content: space-between; -webkit-justify-content: space-between;
+
+}
+
 @media only screen and (max-width: 800px) {
 
   body {

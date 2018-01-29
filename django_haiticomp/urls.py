@@ -21,9 +21,9 @@ from haiticomp import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='input-redirect'),
-    url(r'^compensation/(?P<package_id>[-\w\d]+)/(?P<language>[-\w\d]+)/$', views.view_compensation, name='package'),
-    url(r'^verified/(?P<package_id>[-\w\d]+)/(?P<language>[-\w\d]+)/$', views.verify_compensation, name='verify-compensation'),
-    url(r'^wrong/(?P<package_id>[-\w\d]+)/(?P<language>[-\w\d]+)/$', views.wrong_compensation, name='wrong-compensation'),
-    url(r'^input/(?P<language>[-\w\d]+)/$', views.farmer_input, name='farmer-input'),
+    url(r'^compensation/(?P<package_id>[-\w\d]+)/(?P<language>[-\w\d]+)/$', views.ViewCompensation.as_view(), name='package'),
+    url(r'^verified/(?P<package_id>[-\w\d]+)/(?P<language>[-\w\d]+)/$', views.VerifyCompensation.as_view(), name='verify-compensation'),
+    url(r'^wrong/(?P<package_id>[-\w\d]+)/(?P<language>[-\w\d]+)/$', views.WrongCompensation.as_view(), name='wrong-compensation'),
+    url(r'^input/(?P<language>[-\w\d]+)/$', views.FarmerInput.as_view(), name='farmer-input'),
    
 ]
