@@ -28,7 +28,6 @@ class CompPackage(models.Model):
                     'payments': [payment,],
                 }
         for key, value in payment_dict.iteritems():
-            print(value)
             total = 0
             for payment in value['payments']:
                 total += payment.value

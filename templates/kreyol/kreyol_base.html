@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en'>
+{% load staticfiles %}
+{% load humanize %}
+<head>
+  <title>{{ title|default:"Kreyol: Compensation Check" }}</title>
+  <link rel="stylesheet" href="{% static 'css/footable.standalone.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/footable.js' %}"></script>
+</head>
+<body>
+  <div class="Content">
+    {% block content %}
+    {% endblock %}
+  </div>
+  {% block javascript %}
+  {% endblock %}
+</body>
+</html>
+
+

@@ -47,12 +47,11 @@
     </tbody>
 
   </table>
-  <a href="{% url 'verify-compensation' package_id=package.id language='english' %}" class="SubmitButton">Correct</a>
-  <a href="{% url 'wrong-compensation' package_id=package.id language='english' %}" class="SubmitButton SubmitButton-red">Incorrect</a>
+  <a href="{% url 'verify-compensation' package_id=package.id %}" class="SubmitButton">Correct</a>
+  <a href="{% url 'wrong-compensation' package_id=package.id %}" class="SubmitButton SubmitButton-red">Incorrect</a>
   <div class="Restart">
-    <a href="{% url 'farmer-input-language' language='english' %}">Restart</a>
+    <a href="{% url 'farmer-input' %}">Restart</a>
   </div>
-  <a href="{% url 'farmer-input' %}" class="KreyolButton">Kreyol: Kreyol</a>
 {% endblock %}
 
 {% block javascript %}

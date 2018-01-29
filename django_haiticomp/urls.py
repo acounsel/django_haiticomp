@@ -20,9 +20,10 @@ from haiticomp import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index/$', views.index, name='index'),
-    url(r'^compensation/(?P<package_id>[-\w\d]+)/$', views.view_compensation, name='package'),
-    url(r'^verified/(?P<package_id>[-\w\d]+)/$', views.verify_compensation, name='verify-compensation'),
-    url(r'^wrong/(?P<package_id>[-\w\d]+)/$', views.wrong_compensation, name='wrong-compensation'),
     url(r'^$', views.farmer_input, name='farmer-input'),
+    url(r'^compensation/(?P<package_id>[-\w\d]+)/(?P<language>[-\w\d]+)/$', views.view_compensation, name='package'),
+    url(r'^verified/(?P<package_id>[-\w\d]+)/(?P<language>[-\w\d]+)/$', views.verify_compensation, name='verify-compensation'),
+    url(r'^wrong/(?P<package_id>[-\w\d]+)/(?P<language>[-\w\d]+)/$', views.wrong_compensation, name='wrong-compensation'),
+    url(r'^input/(?P<language>[-\w\d]+)/$', views.farmer_input, name='farmer-input-language'),
+   
 ]

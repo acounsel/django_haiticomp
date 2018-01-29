@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Find Your Compensation Payment</h1>
+  <h1>Kreyol: Find Your Compensation Payment</h1>
   {% if error_message %}
   <div class="Error">{{ error_message }}</div>
   {% endif %}
   <form action="" method="post">
     {% csrf_token %}
-    <label>Please enter your tax ID number.</label>
+    <label>Kreyol: Please enter your tax ID number.</label>
 
     <div>
-      <input type="text" placeholder="Ex: 01-85-99-1998-18-00-001" name="tax_id">
+      <input type="text" placeholder="Kreyol: Ex: 01-85-99-1998-18-00-001" name="Kreyol: tax_id">
     </div>
     <p><input type="submit" class="SubmitButton" value="Submit"></p>
-    <a href="{% url 'farmer-input' %}" class="KreyolButton">Kreyol: Kreyol</a>
+    <a href="{% url 'farmer-input' %}" class="EnglishButton">English</a>
   </form>
 {% endblock %}
 

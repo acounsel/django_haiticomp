@@ -10,8 +10,11 @@ from haiticomp.models import Payment, CompPackage
 def index(request):
     return HttpResponse('Hello farmer, check your compensation package.')
 
-def view_compensation(request, package_id=None):
-    template = 'package.html'
+def view_compensation(request, package_id=None, language='kreyol'):
+    if language == 'english':
+        template = 'package.html'
+    else:
+        template = 'kreyol/package.html'
     package = CompPackage.objects.get(id=package_id)
     payment_dict = package.group_payments_by_date()
     data = {
@@ -21,8 +24,11 @@ def view_compensation(request, package_id=None):
 
     return render(request, template, data)
 
-def farmer_input(request):
-    template = 'farmer_input.html'
+def farmer_input(request, language='kreyol'):
+    if language == 'english':
+        template = 'farmer_input.html'
+    else:
+        template = 'kreyol/farmer_input.html'
     error_message = ''
     if request.method=='POST':
         tax_id = request.POST['tax_id']
@@ -38,15 +44,21 @@ def farmer_input(request):
     }
     return render(request, template, data)
 
-def verify_compensation(request, package_id):
-    template = 'response_recorded.html'
+def verify_compensation(request, package_id, language='kreyol'):
+    if language == 'english':
+        template = 'response_recorded.html'
+    else:
+        template = 'kreyol/response_recorded.html'
     package = CompPackage.objects.get(id=package_id)
     package.is_verified = True
     package.save()
     return render(request, template)
 
-def wrong_compensation(request, package_id): 
-    template = 'response_recorded.html'
+def wrong_compensation(request, package_id, language='kreyol'): 
+    if language == 'english':
+        template = 'response_recorded.html'
+    else: 
+        template = 'kreyol/response_recorded.html'
     package = CompPackage.objects.get(id=package_id)
     package.is_wrong = True
     package.save()
