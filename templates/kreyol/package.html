@@ -49,7 +49,7 @@
   <a href="{% url 'verify-compensation' package_id=package.id language='kreyol' %}" class="SubmitButton">Kòrèk</a>
   <a href="{% url 'wrong-compensation' package_id=package.id language='kreyol' %}" class="SubmitButton SubmitButton-red">Fo</a>
   <div class="Restart">
-    <a href="{% url 'farmer-input' language='kreyol'%}">Rekòmanse</a>
+    <a href="{% url 'farmer-input' language=language%}">Rekòmanse</a>
   </div>
 {% endblock %}
 
