@@ -13,6 +13,7 @@ class CompPackage(models.Model):
     num_family = models.IntegerField(blank=True, null=True)
     is_verified = models.BooleanField(default=False)
     is_wrong = models.BooleanField(default=False)
+    issue = models.TextField(blank=True)
 
     def __str__(self):
         return self.name

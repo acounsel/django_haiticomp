@@ -21,6 +21,15 @@ input {
   width: 270px;
 }
 
+textarea {
+  width: 600px;
+  height: 200px;
+  font-size: 18px;
+  line-height: 20px;
+  margin-top: 5px;
+  padding: 10px;
+}
+
 th, td{
   border: 1px solid #5d5d5d;
   border-collapse: collapse;
@@ -126,4 +135,11 @@ th {
     padding: 20px;
   }
 
+  h1 {
+    font-size: 20px;
+  }
+
+  textarea {
+    width: 90%;
+  }
 }

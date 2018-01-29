@@ -48,14 +48,13 @@ class FarmerInput(BaseView):
         data = self.gather_data(request, language)
         template = '%s/farmer_input.html' % language
         error_message = ''
-        if request.method=='POST':
-            tax_id = request.POST['tax_id']
-            tax_id_digits = ''.join([i for i in tax_id if i.isdigit()])
-            try:
-                package = CompPackage.objects.get(tax_id=tax_id_digits)
-                return redirect(reverse('package', kwargs={'package_id': package.id, 'language':language}))
-            except CompPackage.DoesNotExist:
-                error_message = 'No Compensation For ID Number: %s' % tax_id
+        tax_id = request.POST['tax_id']
+        tax_id_digits = ''.join([i for i in tax_id if i.isdigit()])
+        try:
+            package = CompPackage.objects.get(tax_id=tax_id_digits)
+            return redirect(reverse('package', kwargs={'package_id': package.id, 'language':language}))
+        except CompPackage.DoesNotExist:
+            error_message = 'No Compensation For ID Number: %s' % tax_id
         data.update({
             'error_message': error_message,
         })
@@ -77,7 +76,7 @@ class VerifyCompensation(BaseView):
 class WrongCompensation(BaseView):
 
     def get(self, request, package_id, language):
-        template = '%s/response_recorded.html' % language
+        template = '%s/report_issue.html' % language
         data = self.gather_data(request, language)
         package = CompPackage.objects.get(id=package_id)
         package.is_wrong = True
@@ -86,3 +85,17 @@ class WrongCompensation(BaseView):
             'package': package,
         })
         return render(request, template, data)
+
+    def post(self, request, package_id, language):
+        template = '%s/response_recorded.html' % language
+        data = self.gather_data(request, language)
+        package = CompPackage.objects.get(id=package_id)
+        issue = request.POST['issue']
+        package.issue = issue
+        package.save()
+        data.update({
+            'package': package,
+        })
+        return render(request, template, data)
+
+

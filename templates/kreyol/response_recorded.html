@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Kreyol: Thank you, your response has been recorded.</h3>
-<a href="{% url 'farmer-input' language=language%}" class="SubmitButton">Rekòmanse</a>
+  <h3>Kreyol: Thank you, your response has been recorded.</h3>
+
+  <a href="{% url 'farmer-input' language=language%}" class="SubmitButton">Rekòmanse</a>
+
 {% endblock %}

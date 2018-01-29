@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <form action="" method="post">
+  {% csrf_token %}
+  <label>Describe the issue with the compensation:</label>
+
+  <div>
+    <textarea type="text" name="issue"></textarea>
+  </div>
+  <p><input type="submit" class="SubmitButton SubmitButton-red" value="Antre"></p>
+  
+</form>
+
+{% endblock %}
