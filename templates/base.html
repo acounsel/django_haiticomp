@@ -13,6 +13,23 @@
 </head>
 <body>
   <div class="Content">
+    <div class=FlexBox>
+      {% if language == 'english' %}
+        <h1>IDB Compensation Payment</h1>
+        {% if request.resolver_match.url_name == 'package' %}
+          <a href="{% url request.resolver_match.url_name package_id=package.id language='kreyol' %}">Kreyol</a>
+        {% else %}
+          <a href="{% url request.resolver_match.url_name language='kreyol' %}">Kreyol</a>
+        {% endif %}
+      {% else %}
+        <h1>BID Paymen Kompansasyon</h1>
+        {% if request.resolver_match.url_name == 'package' %}
+          <a href="{% url request.resolver_match.url_name package_id=package.id language='english' %}">English</a>
+        {% else %}
+          <a href="{% url request.resolver_match.url_name language='english' %}">English</a>
+        {% endif %}
+      {% endif %}
+    </div>
     {% block content %}
     {% endblock %}
   </div>

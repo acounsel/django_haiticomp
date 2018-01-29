@@ -40,6 +40,11 @@ th {
     color: white;
 }
 
+.FlexBox {
+  display: flex; -webkit-display: flex;
+  justify-content: space-between; -webkit-justify-content: space-between;
+}
+
 .SubmitButton {
   height: 40px;
   border-radius: 4px;
