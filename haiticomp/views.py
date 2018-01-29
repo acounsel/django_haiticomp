@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect
 from haiticomp.models import Payment, CompPackage
 # Create your views here.
 def index(request):
-    return HttpResponse('Hello farmer, check your compensation package.')
+    return redirect(reverse('farmer-input', kwargs={'language': 'kreyol'}))
 
 def view_compensation(request, package_id=None, language='kreyol'):
     if language == 'english':
@@ -55,6 +55,7 @@ def verify_compensation(request, package_id, language='kreyol'):
     package.is_verified = True
     package.save()
     data = {
+        'package': package,
         'language': language,
     }
     return render(request, template, data)
@@ -68,6 +69,7 @@ def wrong_compensation(request, package_id, language='kreyol'):
     package.is_wrong = True
     package.save()
     data = {
+        'package': package,
         'language': language,
     }
     return render(request, template, data)

@@ -20,7 +20,7 @@
       <p>Final Compensation: $1,450 x <span class="FormulaVariable">{{ package.land_area }}</span> hectares x 5 years x 1.1725 inflation adjustment = <strong>$ {{ package.get_final_compensation|intcomma }}</strong></p>
     </div>
   </div>
-  <p><strong>Bank Payments: </strong></p>
+  <p><strong>Verified Payments: </strong></p>
 
   <table class="CompensationTable FooTable">
     <thead>
@@ -50,9 +50,8 @@
   <a href="{% url 'verify-compensation' package_id=package.id language='english' %}" class="SubmitButton">Correct</a>
   <a href="{% url 'wrong-compensation' package_id=package.id language='english' %}" class="SubmitButton SubmitButton-red">Incorrect</a>
   <div class="Restart">
-    <a href="{% url 'farmer-input-language' language='english' %}">Restart</a>
+    <a href="{% url 'farmer-input' language='english' %}">Restart</a>
   </div>
-  <a href="{% url 'farmer-input' %}" class="KreyolButton">Kreyol: Kreyol</a>
 {% endblock %}
 
 {% block javascript %}

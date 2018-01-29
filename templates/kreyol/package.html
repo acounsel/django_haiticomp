@@ -1,34 +1,34 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
-  <p><span class="PayeeInfo">Name: </span>{{ package.name }}</p>
-  <p><span class="PayeeInfo">Date of Birth: </span>{{ package.dob }}</p>
-  <p><span class="PayeeInfo">ID: </span>{{ package.tax_id }}</p>
-  <p><span class="PayeeInfo">Farm Size: </span>{{ package.land_area }} hectares</p>
-  <p><span class="PayeeInfo">Family Members: </span>{{ package.num_family }}</p>
+  <p><span class="PayeeInfo">Nom: </span>{{ package.name }}</p>
+  <p><span class="PayeeInfo">Dat nesans: </span>{{ package.dob }}</p>
+  <p><span class="PayeeInfo">CIN: </span>{{ package.tax_id }}</p>
+  <p><span class="PayeeInfo">Gwosè tè ki afekte: </span>{{ package.land_area }} hectares</p>
+  <p><span class="PayeeInfo">Kantite moun ki te viv nan kay la: </span>{{ package.num_family }}</p>
   <div class="ExpectedPayments">
-    <p><strong>Expected Payments</strong></p>
+    <p><strong>Peman espere yo</strong></p>
   
     <div class="Formula"> 
-     <p>Loss of Harvest: $1,450 x <span class="FormulaVariable">{{ package.land_area }}</span> hectares = <strong>$ {{ package.get_loss_of_harvest_compensation|intcomma }}</strong></p>
+     <p>Pèt rekòt: $1,450 x <span class="FormulaVariable">{{ package.land_area }}</span> hectares = <strong>$ {{ package.get_loss_of_harvest_compensation|intcomma }}</strong></p>
     </div>
     <div class="Formula"> 
-      <p>Food Security: $80 x <span class="FormulaVariable">{{ package.num_family }}</span> family members = <strong>$ {{ package.get_num_family_compensation|intcomma }}</strong></p>
+      <p>Sekirite manje: $80 x <span class="FormulaVariable">{{ package.num_family }}</span> family members = <strong>$ {{ package.get_num_family_compensation|intcomma }}</strong></p>
     </div>
     <div class="Formula"> 
-      <p>Final Compensation: $1,450 x <span class="FormulaVariable">{{ package.land_area }}</span> hectares x 5 years x 1.1725 inflation adjustment = <strong>$ {{ package.get_final_compensation|intcomma }}</strong></p>
+      <p>Konpansasyon final: $1,450 x <span class="FormulaVariable">{{ package.land_area }}</span> hectares x 5 ane x 1.1725 kalkil enflasyon an = <strong>$ {{ package.get_final_compensation|intcomma }}</strong></p>
     </div>
   </div>
-  <p><strong>Bank Payments: </strong></p>
+  <p><strong>Verifye peman yo: </strong></p>
 
   <table class="CompensationTable FooTable">
     <thead>
       <tr>
-        <th>Date</th>
-        <th data-breakpoints="xs">Lost Harvest</th>
-        <th data-breakpoints="xs">Food Security</th>
-        <th data-breakpoints="xs">Improvements</th>
-        <th data-breakpoints="xs">Final Compensation</th>
+        <th>Dat</th>
+        <th data-breakpoints="xs">Pèt rekòt</th>
+        <th data-breakpoints="xs">Sekirite manje</th>
+        <th data-breakpoints="xs">Envestisman ki fèt sou teren an</th>
+        <th data-breakpoints="xs">Konpansasyon final</th>
         <th>Total</th>
       </tr>
     </thead>
@@ -46,10 +46,10 @@
     </tbody>
 
   </table>
-  <a href="{% url 'verify-compensation' package_id=package.id language='kreyol' %}" class="SubmitButton">Correct</a>
-  <a href="{% url 'wrong-compensation' package_id=package.id language='kreyol' %}" class="SubmitButton SubmitButton-red">Incorrect</a>
+  <a href="{% url 'verify-compensation' package_id=package.id language='kreyol' %}" class="SubmitButton">Kòrèk</a>
+  <a href="{% url 'wrong-compensation' package_id=package.id language='kreyol' %}" class="SubmitButton SubmitButton-red">Fo</a>
   <div class="Restart">
-    <a href="{% url 'farmer-input' %}">Restart</a>
+    <a href="{% url 'farmer-input' language='kreyol'%}">Rekòmanse</a>
   </div>
 {% endblock %}
 
