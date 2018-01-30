@@ -11,22 +11,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fa+!8h-!*vh=e&vgt6wabb@q!km**164vja%4+u$6mg417re9-'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+from local_settings import SECRET_KEY, DEBUG, ALLOWED_HOSTS, DATABASES, TEMPLATEDIRS,
+from local_settings import STATICFILES_DIRS, PROJECT_DIR, STATIC_ROOT, STATIC_URL,
+from local_settings import ADMINS, BASE_DIR
 
 # Application definition
 
@@ -56,7 +43,7 @@ ROOT_URLCONF = 'django_haiticomp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': TEMPLATEDIRS,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,16 +58,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_haiticomp.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 
 # Password validation
@@ -114,14 +91,3 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-
-STATIC_URL = '/static/'
