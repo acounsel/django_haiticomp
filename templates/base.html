@@ -3,6 +3,7 @@
 {% load staticfiles %}
 {% load humanize %}
 <head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{{ title|default:"Compensation Check" }}</title>
   <link rel="stylesheet" href="{% static 'css/footable.standalone.css' %}">
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -20,7 +21,12 @@
         <h1>Gade peman konpansasyon ou</h1>
       {% endif %}
       <div class="LanguageToggle">
-        <a href="{% url request.resolver_match.url_name package_id=package.id language=other_language %}">{{ other_language|title }}</a> | <strong>{{ language|title }}</strong>
+        {% if request.resolver_match.url_name == 'farmer-input' %}
+        <a href="{% url request.resolver_match.url_name language=other_language %}">
+        {% else %}
+        <a href="{% url request.resolver_match.url_name package_id=package.id language=other_language %}">
+        {% endif %}
+        {{ other_language|title }}</a> | <strong>{{ language|title }}</strong>
 
       </div>
 
