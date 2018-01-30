@@ -49,7 +49,7 @@ input {
 }
 .onoffswitch-inner:after {
     content: "English";
-    padding-right: 10px;
+    padding-right: 7px;
     background-color: #EEEEEE; color: #999999;
     text-align: right;
 }
@@ -81,7 +81,7 @@ textarea {
 }
 
 th, td{
-  border: 1px solid #5d5d5d;
+  /*border: 1px solid #5d5d5d;*/
   border-collapse: collapse;
   padding: 5px 10px;
 }
@@ -150,12 +150,12 @@ th {
   margin-left: 20px;
 }
 .FormulaVariable {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 600;
   color: #3DBD89;
  } 
   .FormulaVariable-blue {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 600;
     color: #809fff;
   }
@@ -187,6 +187,17 @@ th {
 
   h1 {
     font-size: 20px;
+  }
+
+  tr:hover {background-color: #f2f2f2;
+  }
+  
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #f2f2f2;
+    color: black;
   }
 
   textarea {
