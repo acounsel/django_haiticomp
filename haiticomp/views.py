@@ -24,6 +24,7 @@ class BaseView(View):
         }
         return data
 
+# View Compensation views
 class ViewCompensation(BaseView):
 
     def get(self, request, package_id, language):
