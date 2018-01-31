@@ -1,5 +1,5 @@
-# django_haiticomp
-This is a simple tool to access compensation data using CID numbers.
+# Online Compensation Checker
+A simple tool to access compensation data using CID numbers.
 
 ## Getting Started
 
