@@ -7,17 +7,17 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-This platform relies on python 2.7, django 1.11, jQuery, and FooTable
+This platform relies on Python 2.7, django 1.11, jQuery.
 
 ## Built With
 
 * [django](https://www.djangoproject.com) - The web framework used
-* [FooTable] - A jQuery plugin for responsive tables
+* [FooTable](https://fooplugins.com/plugins/footable-jquery/) - A jQuery plugin for responsive tables
 * [Font Awesome](http://fontawesome.io/get-started/) - The font package used
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/acounsel/django_haiticomp/tags). 
 
 ## Authors
 * **Samer Araabi**
