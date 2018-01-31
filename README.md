@@ -20,8 +20,8 @@ This platform relies on Python 2.7, django 1.11, jQuery.
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/acounsel/django_haiticomp/tags). 
 
 ## Authors
-* **Samer Araabi**
 * **Marisa Lenci**
+* **Samer Araabi**
 * **Lani Inverarity**
 
 ## License
