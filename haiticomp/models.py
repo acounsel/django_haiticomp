@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from collections import OrderedDict
 from decimal import Decimal
 from django.db import models
 
@@ -19,7 +20,7 @@ class CompPackage(models.Model):
         return self.name
 
     def group_payments_by_date(self):
-        payment_dict = {}
+        payment_dict = OrderedDict()
         payments = self.payment_set.order_by('date')
         for payment in payments:
             if payment.date in payment_dict:

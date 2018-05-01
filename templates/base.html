@@ -42,11 +42,6 @@
     {% block content %}
     {% endblock %}
   </div>
-  <script>
-    $( ".onoffswitch").click(function() {
-      window.location.href = "{% url request.resolver_match.url_name language=other_language %}";
-    });
-  </script>
   {% block javascript %}
   {% endblock %}
 </body>
