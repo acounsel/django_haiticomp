@@ -134,5 +134,10 @@ class CreateCompensation(EditCompensation, CreateView):
         return True
 
 class UpdateCompensation(EditCompensation, UpdateView):
-    model = CompPackage
+    template_name = 'kreyol/package.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(UpdateCompensation, self).get_context_data()
+        context['payment_dict'] = context['comppackage'].group_payments_by_date()
+        return context
 

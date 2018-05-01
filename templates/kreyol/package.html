@@ -2,23 +2,27 @@
 {% load humanize %}
 {% block content %}
 <div class="Bio">
-  <p><span class="PayeeInfo">Nom: </span>{{ package.name }}</p>
-  <p><span class="PayeeInfo">Laj: </span>{{ package.age }}</p>
+  <form action="" method="post">
+    {% csrf_token %}
+  <p><span class="PayeeInfo">Nom: </span><span class="FormField">{{ form.name }}</span></p>
+  <p><span class="PayeeInfo">Laj: </span><span class="FormField">{{ form.age }}</span></p>
 <!--   <p><span class="PayeeInfo">CIN: </span>{{ package.tax_id }}</p> -->
-  <p><span class="PayeeInfo">Gwosè tè ki afekte: </span><span class="FormulaVariable">{{ package.land_area }}</span> hectares</p>
-  <p><span class="PayeeInfo">Kantite moun ki te viv nan kay la: </span><span class="FormulaVariable-blue">{{ package.num_family }}</span></p>
+  <p><span class="PayeeInfo">Gwosè tè ki afekte: </span><span class="FormulaVariable FormField">{{ form.land_area }}</span> hectares</p>
+  <p><span class="PayeeInfo">Kantite moun ki te viv nan kay la: </span><span class="FormulaVariable-blue FormField">{{ form.num_family }}</span></p>
+  <input type="submit" class="SubmitButton" value="Transmét">
+  </form>
 </div>
   <div class="ExpectedPayments">
     <p><strong>Peman espere yo</strong></p>
   
     <div class="Formula"> 
-     <p>Pèt rekòt: $1,450 x <span class="FormulaVariable">{{ package.land_area }}</span> hectares = <strong>$ {{ package.get_loss_of_harvest_compensation|intcomma }}</strong></p>
+     <p>Pèt rekòt: $1,450 x <span class="FormulaVariable">{{ comppackage.land_area }}</span> hectares = <strong>$ {{ comppackage.get_loss_of_harvest_compensation|intcomma }}</strong></p>
     </div>
     <div class="Formula"> 
-      <p>Sekirite manje: $80 x <span class="FormulaVariable-blue">{{ package.num_family }}</span> moun ki te viv nan kay la = <strong>$ {{ package.get_num_family_compensation|intcomma }}</strong></p>
+      <p>Sekirite manje: $80 x <span class="FormulaVariable-blue">{{ comppackage.num_family }}</span> moun ki te viv nan kay la = <strong>$ {{ comppackage.get_num_family_compensation|intcomma }}</strong></p>
     </div>
     <div class="Formula"> 
-      <p>Konpansasyon final: $1,450 x <span class="FormulaVariable">{{ package.land_area }}</span> hectares x 5 ane x 1.1725 kalkil enflasyon an = <strong>$ {{ package.get_final_compensation|intcomma }}</strong></p>
+      <p>Konpansasyon final: $1,450 x <span class="FormulaVariable">{{ comppackage.land_area }}</span> hectares x 5 ane x 1.1725 kalkil enflasyon an = <strong>$ {{ comppackage.get_final_compensation|intcomma }}</strong></p>
     </div>
   </div>
   <p><strong>Verifye peman yo: </strong></p>
@@ -48,8 +52,8 @@
     </tbody>
 
   </table>
-  <a href="{% url 'verify-compensation' package_id=package.id language='kreyol' %}" class="SubmitButton">Kòrèk</a>
-  <a href="{% url 'wrong-compensation' package_id=package.id language='kreyol' %}" class="SubmitButton SubmitButton-red">Fo</a>
+  <a href="{% url 'verify-compensation' package_id=comppackage.id language='kreyol' %}" class="SubmitButton">Kòrèk</a>
+  <a href="{% url 'wrong-compensation' package_id=comppackage.id language='kreyol' %}" class="SubmitButton SubmitButton-red">Fo</a>
   <div class="Restart">
     <a href="{% url 'start'%}">Rekòmanse</a>
   </div>

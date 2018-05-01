@@ -21,7 +21,7 @@ class CompPackage(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('package', kwargs={'package_id': self.id})
+        return reverse('update-compensation', kwargs={'pk': self.id})
 
     def group_payments_by_date(self):
         payment_dict = {}

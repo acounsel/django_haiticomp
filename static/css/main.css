@@ -163,12 +163,6 @@ th {
       color: #000000;
   }
 
-.PayeeInfo {
-  display: inline-block;
-  width: 250px;
-  margin-right: 30px;
-}
-
 .Restart {
   margin-top: 30px;
 }
@@ -194,6 +188,25 @@ th {
   padding-left: 10px;
   color: #4d4d4d;
 }
+
+.Bio {
+  background-color: #dbdbdb;
+  float: right;
+  padding: 14px;
+  border-radius: 10px;
+}
+  .PayeeInfo {
+    display: inline-block;
+    width: 250px;
+    margin-right: 30px;
+    background-color: white;
+    border-radius: 4px;
+    max-width: max-content;
+    padding: 4px;
+    text-transform: uppercase;
+
+  }
+
 
 label {
   text-transform: uppercase;
