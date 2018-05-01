@@ -74,6 +74,8 @@ class Payment(models.Model):
     def __str__(self):
         return '$%s payment to %s' % (self.value, self.package.name)
 
-
+class CompPackageRevision(models.Model):
+    package = models.ForeignKey(CompPackage)
+    
 
 
