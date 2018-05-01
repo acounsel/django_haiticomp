@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if error_message %}
+  <div class="Error">{{ error_message }}</div>
+  {% endif %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <label>Nom</label>
+    <div class="FormField">
+      {{ form.name }}
+    </div>
+    <label>Laj</label>
+    <div class="FormField FormField--short">
+      {{ form.age }} <span class="FormField-units">ane</span>
+    </div>
+    <label>Kantite moun ki te viv nan kay la</label>
+    <div class="FormField FormField--short">
+      {{ form.num_family }} <span class="FormField-units">moun</span>
+    </div>
+    <label>Gwosè tè ki afekte</label>
+    <div class="FormField FormField--short">
+      {{ form.land_area }} <span class="FormField-units">hectares</span>
+    </div>
+    <p><input type="submit" class="SubmitButton" value="Transmèt"></p>
+    
+  </form>
+{% endblock %}
+
+

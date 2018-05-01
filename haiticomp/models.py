@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.core.urlresolvers import reverse
 from decimal import Decimal
 from django.db import models
 
@@ -8,15 +8,20 @@ from django.db import models
 class CompPackage(models.Model):
     name = models.CharField(max_length=200)
     dob = models.DateField(blank=True, null=True)
-    tax_id = models.CharField(max_length=200)
+    age = models.IntegerField(blank=True, null=True)
+    tax_id = models.CharField(max_length=200, blank=True)
     land_area = models.DecimalField(max_digits=4, decimal_places=2)
     num_family = models.IntegerField(blank=True, null=True)
     is_verified = models.BooleanField(default=False)
     is_wrong = models.BooleanField(default=False)
     issue = models.TextField(blank=True)
 
+
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('package', kwargs={'package_id': self.id})
 
     def group_payments_by_date(self):
         payment_dict = {}

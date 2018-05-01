@@ -179,6 +179,28 @@ th {
 
 }
 
+.FormField {
+  margin-bottom: 30px;
+  margin-top: 2px;
+
+}
+.FormField--short input{
+  width: 50px;
+
+}
+
+.FormField-units {
+  font-size: 18px;
+  padding-left: 10px;
+  color: #4d4d4d;
+}
+
+label {
+  text-transform: uppercase;
+  color: #4d4d4d;
+  letter-spacing: 0.4px;
+}
+
 @media only screen and (max-width: 800px) {
 
   body {

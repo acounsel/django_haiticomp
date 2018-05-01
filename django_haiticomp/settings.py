@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from local_settings import SECRET_KEY, DEBUG, ALLOWED_HOSTS, DATABASES, TEMPLATEDIRS
-from local_settings import STATICFILES_DIRS, PROJECT_DIR, STATIC_ROOT, STATIC_URL
-from local_settings import ADMINS, BASE_DIR
+from .local_settings import SECRET_KEY, DEBUG, ALLOWED_HOSTS, DATABASES, TEMPLATEDIRS
+from .local_settings import STATICFILES_DIRS, PROJECT_DIR, STATIC_ROOT, STATIC_URL
+from .local_settings import ADMINS, BASE_DIR
 
 # Application definition
 
