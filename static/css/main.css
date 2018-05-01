@@ -1,4 +1,4 @@
-body {
+/*body {
   background-color: #fafafa;
   padding: 50px; 
 }
@@ -20,8 +20,18 @@ input {
   margin-top: 5px;
   padding-left: 10px;
   width: 270px;
+}*/
+body {
+  background: url("https://s3-us-west-1.amazonaws.com/aconsole-static/media/misc/IMG_2558.jpg");
+  background-size:cover;
 }
-
+h1 {
+  padding: 20px 0 0 20px;
+}
+.Title {
+  font-size: 70px;
+  color:white;
+}
 .onoffswitch {
     position: relative; width: 90px;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
@@ -71,7 +81,7 @@ input {
     right: 0px; 
 }
 
-textarea {
+/*textarea {
   width: 600px;
   height: 200px;
   font-size: 18px;
@@ -81,7 +91,6 @@ textarea {
 }
 
 th, td{
-  /*border: 1px solid #5d5d5d;*/
   border-collapse: collapse;
   padding: 5px 10px;
 }
@@ -97,7 +106,20 @@ th {
     text-align: left;
     background-color: #4d4d4d;
     color: white;
+}*/
+
+.FormBox {
+  max-width: 370px;
+  padding: 20px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  margin: 70px auto;
+  background-color: #FFFFFF;
 }
+.PaymentPage .FormBox {
+  margin: 0;
+}
+
 
 .SubmitButton {
   height: 40px;
@@ -124,9 +146,14 @@ th {
   }
 
 .Content {
-  background-color: #FFFFFF;
   border-radius: 8px;
-  padding: 10px 30px 100px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 30px 100px 50px;
+  margin: 0 auto;
+  height: 100%;
+  padding-bottom: 300px;
 }
 
 .Error {
@@ -138,8 +165,12 @@ th {
   margin-bottom: 20px;
 }
 
+.VerifyButton {
+  width: 150px;
+}
+
 .ExpectedPayments {
-  margin: 30px 0;
+  margin-bottom: 50px;
 }
 
 .CompensationTable {
@@ -152,22 +183,16 @@ th {
 .FormulaVariable {
   font-size: 30px;
   font-weight: 600;
-  color: #3DBD89;
+  color: #28a745;
  } 
   .FormulaVariable-blue {
     font-size: 30px;
     font-weight: 600;
-    color: #809fff;
+    color: #007bff;
   }
     .FormulaVariable.black {
       color: #000000;
   }
-
-.PayeeInfo {
-  display: inline-block;
-  width: 250px;
-  margin-right: 30px;
-}
 
 .Restart {
   margin-top: 30px;
@@ -179,10 +204,62 @@ th {
 
 }
 
+.FormField {
+  margin-bottom: 30px;
+  margin-top: 2px;
+
+}
+.FormField--short input{
+  width: 50px;
+}
+
+.FormField-units {
+  font-size: 18px;
+  padding-left: 10px;
+  color: #4d4d4d;
+}
+
+
+.PaymentPage {
+  background-color: white;
+  max-width: 1250px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 4px;
+}
+
+.Bio {
+  background-color: #dbdbdb;
+  float: right;
+  padding: 14px;
+  border-radius: 10px;
+}
+  .PayeeInfo {
+    display: inline-block;
+    width: 250px;
+    margin-right: 30px;
+    background-color: white;
+    border-radius: 4px;
+    max-width: max-content;
+    padding: 4px;
+    text-transform: uppercase;
+
+  }
+
+
+/*label {
+  text-transform: uppercase;
+  color: #4d4d4d;
+  letter-spacing: 0.4px;
+}*/
+
 @media only screen and (max-width: 800px) {
 
   body {
     padding: 20px;
+  }
+  .Content {
+    padding: 0;
   }
 
   h1 {
