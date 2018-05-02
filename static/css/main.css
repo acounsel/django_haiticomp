@@ -22,13 +22,11 @@ input {
   width: 270px;
 }*/
 body {
-  background: url("https://s3-us-west-1.amazonaws.com/aconsole-static/media/misc/IMG_2558.jpg");
+  background: url("https://s3-us-west-1.amazonaws.com/aconsole-static/media/misc/limonade_crop.png");
   background-size:cover;
 }
 h1 {
   padding: 20px 0 0 20px;
-}
-.Title {
   font-size: 70px;
   color:white;
 }
@@ -190,8 +188,14 @@ th {
     font-weight: 600;
     color: #007bff;
   }
+  .FormulaVariable-red {
+    font-size: 30px;
+    font-weight: 600;
+    color: #dc3545;
+  }
     .FormulaVariable.black {
       color: #000000;
+  }
   }
 
 .Restart {
@@ -260,6 +264,10 @@ th {
   }
   .Content {
     padding: 0;
+    flex-direction: column;
+  }
+  .FlexBox {
+    flex-direction: column;
   }
 
   h1 {

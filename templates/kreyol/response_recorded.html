@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h3>Mèsi, repons ou an anrejistre.</h3>
+<div style="padding:40px; max-width: 300px;margin:100px auto">
+  <h3 class="text-white">Mèsi, repons ou an anrejistre.</h3>
 
-  <a href="{% url 'start'%}" class="SubmitButton">Rekòmanse</a>
-
+  <a href="{% url 'start'%}" class="btn btn-success btn-lg">Rekòmanse</a>
+</div>
 {% endblock %}

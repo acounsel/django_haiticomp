@@ -11,6 +11,6 @@ class CompPackageForm(ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Josef Alians'}),
             'age': forms.TextInput(attrs={'class':'form-control font-weight-bold', 'placeholder':'20'}),
-            'num_family': forms.TextInput(attrs={'class':'form-control text-primary font-weight-bold', 'placeholder':'10'}),
-            'land_area': forms.TextInput(attrs={'class':'form-control text-success font-weight-bold', 'placeholder':'0.50'})
+            'num_family': forms.TextInput(attrs={'class':'form-control text-danger font-weight-bold', 'placeholder':'10'}),
+            'land_area': forms.TextInput(attrs={'class':'form-control text-primary font-weight-bold', 'placeholder':'0.50'})
         }

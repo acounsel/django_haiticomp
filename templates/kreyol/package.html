@@ -16,16 +16,16 @@
     <div class="FlexBox">
       <div class="PaymentInfo">
         <div class="ExpectedPayments">
-          <h2 style="padding-bottom: 20px;">Peman espere yo</h2>
+          <h2 style="padding-bottom: 20px;">Peman espere yo pou: {{ comppackage.name }}</h2>
         
           <div class="Formula"> 
-           <p>Pèt rekòt: $1,450 x <span class="FormulaVariable">{{ comppackage.land_area }}</span> ekta = <strong>$ {{ comppackage.get_loss_of_harvest_compensation|intcomma }}</strong></p>
+           <p>Pèt rekòt: $1,450 x <span class="FormulaVariable-blue">{{ comppackage.land_area }}</span> ekta = <strong>$ {{ comppackage.get_loss_of_harvest_compensation|intcomma }}</strong></p>
           </div>
           <div class="Formula"> 
-            <p>Sekirite alimantè: $80 x <span class="FormulaVariable-blue">{{ comppackage.num_family }}</span> moun ki te viv nan kay la = <strong>$ {{ comppackage.get_num_family_compensation|intcomma }}</strong></p>
+            <p>Sekirite alimantè: $80 x <span class="FormulaVariable-red">{{ comppackage.num_family }}</span> moun ki te viv nan kay la = <strong>$ {{ comppackage.get_num_family_compensation|intcomma }}</strong></p>
           </div>
           <div class="Formula"> 
-            <p>Konpansasyon final: $1,450 x <span class="FormulaVariable">{{ comppackage.land_area }}</span> ekta x 5 ane x 1.1725 endikatè lavi chè a = <strong>$ {{ comppackage.get_final_compensation|intcomma }}</strong></p>
+            <p>Konpansasyon final: $1,450 x <span class="FormulaVariable-blue">{{ comppackage.land_area }}</span> ekta x 5 ane x 1.1725 endikatè lavi chè a = <strong>$ {{ comppackage.get_final_compensation|intcomma }}</strong></p>
           </div>
         </div>
         <table class="table FooTable">

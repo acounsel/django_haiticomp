@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div style="padding:40px; max-width: 600px;margin:100px auto">
   <form action="" method="post">
-  {% csrf_token %}
-  <label>Silvouplet, dekri pwoblèm ou sou konpansasyon la:</label>
+      {% csrf_token %}
+      <label class="text-white">Silvouplet, dekri pwoblèm ou sou konpansasyon la:</label>
 
-  <div>
-    <textarea type="text" name="issue"></textarea>
-  </div>
-  <p><input type="submit" class="SubmitButton SubmitButton-red" value="Transmèt"></p>
-  
-</form>
-
+      <div>
+        <textarea class="form-control form-control-lg" type="text" style="margin-bottom: 20px; height:200px" name="issue"></textarea>
+      </div>
+      <p><input type="submit" class="btn btn-danger btn-lg" value="Transmèt"></p>
+      
+    </form>
+</div>
 {% endblock %}
