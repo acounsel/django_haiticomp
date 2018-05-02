@@ -108,6 +108,7 @@ th {
 
 .FormBox {
   max-width: 370px;
+  flex: 0 0 390px;
   padding: 20px;
   border: 1px solid #ced4da;
   border-radius: 8px;
@@ -268,10 +269,14 @@ th {
   }
   .FlexBox {
     flex-direction: column;
+
+  }
+  .FormBox {
+    margin: 30px auto;
   }
 
   h1 {
-    font-size: 20px;
+    font-size: 30px;
   }
 
   tr:hover {background-color: #f2f2f2;
