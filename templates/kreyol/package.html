@@ -19,19 +19,19 @@
           <h2 style="padding-bottom: 20px;">Peman espere yo pou: {{ comppackage.name }}</h2>
         
           <div class="Formula"> 
-           <p>Pèt rekòt: <span class="Formula--media">$1,450 x <span class="FormulaVariable-blue">{{ comppackage.land_area }}</span> ekta = <strong>$ {{ comppackage.get_loss_of_harvest_compensation|intcomma }}</strong></span></p>
+           <p>Pèt rekòt: <span class="Formula--media">$1,450 x <span class="FormulaVariable-blue">{{ comppackage.land_area }}</span> ekta = <strong>${{ comppackage.get_loss_of_harvest_compensation|intcomma }}</strong></span></p>
           </div>
           <div class="Formula"> 
-            <p>Sekirite alimantè: <span class="Formula--media">$80 x <span class="FormulaVariable-red">{{ comppackage.num_family }}</span> moun ki te viv nan kay la = <strong>$ {{ comppackage.get_num_family_compensation|intcomma }}</strong></span></p>
+            <p>Sekirite alimantè: <span class="Formula--media">$80 x <span class="FormulaVariable-red">{{ comppackage.num_family }}</span> moun ki te viv nan kay la = <strong>${{ comppackage.get_num_family_compensation|intcomma }}</strong></span></p>
           </div>
           <div class="Formula"> 
-            <p>Konpansasyon final: <span class="Formula--media">$1,450 x <span class="FormulaVariable-blue">{{ comppackage.land_area }}</span> ekta x 5 ane x 1.1725 endikatè lavi chè a = <span class="Formula--media"><strong>$ {{ comppackage.get_final_compensation|intcomma }}</strong></span></span></p>
+            <p>Konpansasyon final: <span class="Formula--media">$1,450 x <span class="FormulaVariable-blue">{{ comppackage.land_area }}</span> ekta x 5 ane x 1.1725 endikatè lavi chè a = <span class="Formula--media"><strong>${{ comppackage.get_final_compensation|intcomma }}</strong></span></span></p>
           </div>
         </div>
         <table class="table FooTable">
           <thead>
             <tr>
-              <th>Dat</th>
+              <th>Ane</th>
               <th data-breakpoints="xs">Pèt rekòt</th>
               <th data-breakpoints="xs">Sekirite alimantè</th>
       <!--         <th data-breakpoints="xs">Envestisman ki fèt sou teren an</th> -->
@@ -53,6 +53,8 @@
           </tbody>
 
         </table>
+        <a href="{% url 'verify-compensation' package_id=comppackage.id language='kreyol' %}" class="btn btn-success btn-lg VerifyButton">Kòrèk</a>
+        <a href="{% url 'wrong-compensation' package_id=comppackage.id language='kreyol' %}" class="btn btn-danger btn-lg VerifyButton">Fo</a>
       </div>
       <div>
         <form action="" method="post" class="FormBox" style="max-width:370px">
@@ -95,8 +97,7 @@
     </div>
 
     
-    <a href="{% url 'verify-compensation' package_id=comppackage.id language='kreyol' %}" class="btn btn-success btn-lg VerifyButton">Kòrèk</a>
-    <a href="{% url 'wrong-compensation' package_id=comppackage.id language='kreyol' %}" class="btn btn-danger btn-lg VerifyButton">Fo</a>
+    
     <div class="Restart">
       <a href="{% url 'start'%}">Rekòmanse</a>
     </div>

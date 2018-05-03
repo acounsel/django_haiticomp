@@ -106,33 +106,30 @@ class EditCompensation(View):
     model = CompPackage
     form_class = CompPackageForm
 
+    def create_annual_payments(self, comp_package):
+        years = {2011, 2012, 2013}
+        for year in years:
+            for payment_type in comp_package.get_recurring_payments():
+                payment = self.create_payment(comp_package, year, payment_type)
+        payment = self.create_payment(comp_package, 2013, Payment.FINAL_COMPENSATION)
+        return True
+
+    def create_payment(self, comp_package, year, payment_type):
+        payment = Payment.objects.create(
+            package=comp_package,
+            date=datetime.date(year, 1, 1),
+            payment_type=payment_type,
+            value=comp_package.get_payment_value(payment_type)
+        )
+        return payment
+
 class CreateCompensation(EditCompensation, CreateView):
 
     def form_valid(self, form):
         response = super(CreateCompensation, self).form_valid(form)
         comp_package = form.instance
         self.create_annual_payments(comp_package)
-        payment = Payment.objects.create(
-            package=comp_package,
-            date=datetime.date(2013, 12, 1),
-            payment_type=Payment.FINAL_COMPENSATION,
-            value=comp_package.get_final_compensation())
         return response
-
-    def create_annual_payments(self, comp_package):
-        years = {2011, 2012, 2013}
-        for year in years:
-            payment = Payment.objects.create(
-                package=comp_package,
-                date=datetime.date(year, 1, 1),
-                payment_type=Payment.LOST_HARVEST,
-                value=comp_package.get_loss_of_harvest_compensation())
-            payment = Payment.objects.create(
-                package=comp_package,
-                date=datetime.date(year, 1, 1),
-                payment_type=Payment.FOOD_SECURITY,
-                value=comp_package.get_num_family_compensation())
-        return True
 
 class UpdateCompensation(EditCompensation, UpdateView):
     template_name = 'kreyol/package.html'
@@ -142,3 +139,11 @@ class UpdateCompensation(EditCompensation, UpdateView):
         context['payment_dict'] = context['comppackage'].group_payments_by_date()
         return context
 
+    def form_valid(self, form):
+        if 'name' in form.changed_data:
+            form.instance.pk = None
+        response = super(UpdateCompensation, self).form_valid(form)
+        form.instance.payment_set.all().delete()
+        self.create_annual_payments(form.instance)
+        
+        return response
