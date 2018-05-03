@@ -107,7 +107,7 @@ class EditCompensation(View):
     form_class = CompPackageForm
 
     def create_annual_payments(self, comp_package):
-        years = {2011, 2012, 2013}
+        years = (2011, 2012, 2013)
         for year in years:
             for payment_type in comp_package.get_recurring_payments():
                 payment = self.create_payment(comp_package, year, payment_type)

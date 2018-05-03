@@ -92,6 +92,7 @@ class CompPackageRevision(models.Model):
     package = models.ForeignKey(CompPackage)
     land_area = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
     num_family = models.IntegerField(blank=True, null=True)
+    age = models.IntegerField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
    
     def __str__(self):
@@ -102,6 +103,7 @@ class CompPackageRevision(models.Model):
             CompPackageRevision.objects.create(
                 package=instance,
                 land_area=instance.land_area,
-                num_family=instance.num_family
+                num_family=instance.num_family,
+                age=instance.age,
             )
 
