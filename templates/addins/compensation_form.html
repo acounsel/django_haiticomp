@@ -1,0 +1,46 @@
+<form action="" method="post" class="FormBox" style="max-width:370px">
+  {% csrf_token %}
+  <div class="form-group form-row">
+    <label class="col-sm-2 col-form-label">Nom</label>
+    <div class="col-sm-10 input-group mb-3">
+      {{ form.name }}
+    </div>
+  </div>
+  <div class="form-group form-row">
+    <label class="col-sm-7 col-form-label">Laj</label>
+    <div class="col-sm-5 input-group mb-3">
+<!--       <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Laj mwen se</span>
+      </div> -->
+      {{ form.age }}
+      <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2">ane</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group form-row">
+    <label class="col-sm-7 col-form-label">Kantite tè a te ye a</label>
+    <div class="col-sm-5 input-group mb-3">
+<!--       <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Gwosè tè ki afekte</span>
+      </div> -->
+      {{ form.land_area }} <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2">ekta</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group form-row">
+    <label class="col-sm-7 col-form-label">Moun ki te viv nan kay la</label>
+    <div class="col-sm-5 input-group mb-3">
+<!--       <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Kantite moun ki te viv nan kay la</span>
+      </div> -->
+      {{ form.num_family }} <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2">moun</span>
+      </div>
+    </div>
+  </div>
+  
+  <p><input type="submit" class="btn btn-success btn-lg btn-block" value="Transmèt"></p>
+    
+</form>

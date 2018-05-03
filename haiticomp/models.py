@@ -13,7 +13,7 @@ class CompPackage(models.Model):
     dob = models.DateField(blank=True, null=True)
     age = models.IntegerField(blank=True, null=True)
     tax_id = models.CharField(max_length=200, blank=True)
-    land_area = models.DecimalField(max_digits=4, decimal_places=2)
+    land_area = models.DecimalField(max_digits=6, decimal_places=3)
     num_family = models.IntegerField(blank=True, null=True)
     is_verified = models.BooleanField(default=False)
     is_wrong = models.BooleanField(default=False)
@@ -41,9 +41,11 @@ class CompPackage(models.Model):
                 }
         for key, value in payment_dict.iteritems():
             total = 0
+            gourde_total = 0
             for payment in value['payments']:
                 total += payment.value
-                value['total'] = total
+                gourde_total += payment.convert_to_gourdes()
+            value['total'] = (total, gourde_total)
         return payment_dict
 
     def get_payment_value(self, payment_type):
@@ -78,7 +80,7 @@ class Payment(models.Model):
         (IMPROVEMENTS, 'Improvements'),
         (FINAL_COMPENSATION, 'Final Compensation'),
     )
-    value = models.IntegerField()
+    value = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateField()
     payment_type = models.CharField(max_length=180, choices=PAYMENT_TYPE_CHOICES)
     description = models.TextField(blank=True)
@@ -88,9 +90,16 @@ class Payment(models.Model):
     def __str__(self):
         return '$%s payment to %s' % (self.value, self.package.name)
 
+    def convert_to_gourdes(self):
+        if self.date.year < 2013:
+            return self.value * 40
+        else: 
+            return int(self.value * Decimal(43.5))
+
+
 class CompPackageRevision(models.Model):
     package = models.ForeignKey(CompPackage)
-    land_area = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
+    land_area = models.DecimalField(max_digits=6, decimal_places=3, blank=True, null=True)
     num_family = models.IntegerField(blank=True, null=True)
     age = models.IntegerField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)

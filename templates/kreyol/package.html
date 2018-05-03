@@ -19,13 +19,13 @@
           <h2 style="padding-bottom: 20px;">Peman espere yo pou: {{ comppackage.name }}</h2>
         
           <div class="Formula"> 
-           <p>Pèt rekòt: <span class="Formula--media">$1,450 x <span class="FormulaVariable-blue">{{ comppackage.land_area }}</span> ekta = <strong>${{ comppackage.get_loss_of_harvest_compensation|intcomma }}</strong></span></p>
+           <p>Pèt rekòt: <span class="Formula--media">$1,450 x <span class="FormulaVariable-blue">{{ comppackage.land_area|floatformat:"2" }}</span> ekta = <strong>${{ comppackage.get_loss_of_harvest_compensation|floatformat:"2"|intcomma }}</strong></span></p>
           </div>
           <div class="Formula"> 
-            <p>Sekirite alimantè: <span class="Formula--media">$80 x <span class="FormulaVariable-red">{{ comppackage.num_family }}</span> moun ki te viv nan kay la = <strong>${{ comppackage.get_num_family_compensation|intcomma }}</strong></span></p>
+            <p>Sekirite alimantè: <span class="Formula--media">$80 x <span class="FormulaVariable-red">{{ comppackage.num_family }}</span> moun ki te viv nan kay la = <strong>${{ comppackage.get_num_family_compensation|floatformat:"2"|intcomma }}</strong></span></p>
           </div>
           <div class="Formula"> 
-            <p>Konpansasyon final: <span class="Formula--media">$1,450 x <span class="FormulaVariable-blue">{{ comppackage.land_area }}</span> ekta x 5 ane x 1.1725 endikatè lavi chè a = <span class="Formula--media"><strong>${{ comppackage.get_final_compensation|intcomma }}</strong></span></span></p>
+            <p>Konpansasyon final: <span class="Formula--media">$1,450 x <span class="FormulaVariable-blue">{{ comppackage.land_area|floatformat:"2" }}</span> ekta x 5 ane x 1.1725 endikatè lavi chè a = <span class="Formula--media"><strong>${{ comppackage.get_final_compensation|floatformat:"2"|intcomma }}</strong></span></span></p>
           </div>
         </div>
         <table class="table FooTable">
@@ -43,11 +43,11 @@
             {% for key, value in payment_dict.iteritems %}
              <tr>
               <td>{{ key }}</td>
-              <td>{% for payment in value.payments %}{% if payment.payment_type == 'lost_harvest' %}${{ payment.value|intcomma }}{% endif %}{% endfor %}</td>
-              <td>{% for payment in value.payments %}{% if payment.payment_type == 'food_security' %}${{ payment.value|intcomma }}{% endif %}{% endfor %}</td>
+              <td>{% for payment in value.payments %}{% if payment.payment_type == 'lost_harvest' %}${{ payment.value|intcomma }} (<i>G{{ payment.convert_to_gourdes|floatformat:"2"|intcomma }}</i>){% endif %}{% endfor %}</td>
+              <td>{% for payment in value.payments %}{% if payment.payment_type == 'food_security' %}${{ payment.value|intcomma }} (<i>G{{ payment.convert_to_gourdes|floatformat:"2"|intcomma }}</i>){% endif %}{% endfor %}</td>
       <!--         <td>{% for payment in value.payments %}{% if payment.payment_type == 'improvements' %}${{ payment.value|intcomma }}{% endif %}{% endfor %}</td> -->
-              <td>{% for payment in value.payments %}{% if payment.payment_type == 'final_compensation' %}${{ payment.value|intcomma }}{% endif %}{% endfor %}</td>
-              <td>$ {{ value.total|intcomma }}</td>
+              <td>{% for payment in value.payments %}{% if payment.payment_type == 'final_compensation' %}${{ payment.value|intcomma }} (<i>G{{ payment.convert_to_gourdes|floatformat:"2"|intcomma }}</i>){% endif %}{% endfor %}</td>
+              <td>${{ value.total.0|floatformat:"2"|intcomma }} (<i>G{{ value.total.1|floatformat:"2"|intcomma }}</i>)</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -57,42 +57,7 @@
         <a href="{% url 'wrong-compensation' package_id=comppackage.id language='kreyol' %}" class="btn btn-danger btn-lg VerifyButton">Fo</a>
       </div>
       <div>
-        <form action="" method="post" class="FormBox" style="max-width:370px">
-          {% csrf_token %}
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Nom</label>
-            <div class="col-sm-10 input-group mb-3">
-              {{ form.name }}
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-7 col-form-label">Laj</label>
-            <div class="col-sm-5 input-group mb-3">
-              {{ form.age }}
-              <div class="input-group-append">
-                <span class="input-group-text" id="basic-addon2">ane</span>
-              </div>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-7 col-form-label">Kantite tè a te ye a</label>
-            <div class="col-sm-5 input-group mb-3">
-
-              {{ form.land_area }} <div class="input-group-append">
-                <span class="input-group-text" id="basic-addon2">ekta</span>
-              </div>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-7 col-form-label">Moun ki te viv nan kay la</label>
-            <div class="col-sm-5 input-group mb-3">
-              {{ form.num_family }} <div class="input-group-append">
-                <span class="input-group-text" id="basic-addon2">moun</span>
-              </div>
-            </div>
-          </div>
-          <p><input type="submit" class="btn btn-success btn-lg btn-block" value="Transmèt"></p>
-        </form>
+      {% include 'addins/compensation_form.html' %}
       </div>
     </div>
 

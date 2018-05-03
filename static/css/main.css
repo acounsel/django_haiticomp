@@ -264,7 +264,9 @@ th {
     text-transform: uppercase;
 
   }
-
+.PaymentInfo {
+  max-width: 700px;
+}
 
 /*label {
   text-transform: uppercase;
