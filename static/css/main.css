@@ -156,6 +156,19 @@ th {
   padding-bottom: 300px;
   padding-right: 80px;
 }
+.KolektifLabel {
+  color: #FFFFFF;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 10px 10px 50px 70px;
+  font-weight: 100;
+}
+.KolektifLabel-comppackage {
+  color: #FFFFFF;
+  padding: 10px 10px 40px 70px;
+  font-weight: 100;
+}
 
 .Error {
   background-color: #F78181;
@@ -229,7 +242,7 @@ th {
 .PaymentPage {
   background-color: white;
   max-width: 1250px;
-  margin: 30px auto;
+  margin: 40px auto;
   padding: 30px;
   border-radius: 4px;
 }
