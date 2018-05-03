@@ -108,7 +108,8 @@ th {
 
 .FormBox {
   max-width: 370px;
-  flex: 0 0 390px;
+/*  flex: 0 0 390px;*/
+  min-width: 370px;
   padding: 20px;
   border: 1px solid #ced4da;
   border-radius: 8px;
@@ -153,6 +154,7 @@ th {
   margin: 0 auto;
   height: 100%;
   padding-bottom: 300px;
+  padding-right: 80px;
 }
 
 .Error {
@@ -196,7 +198,6 @@ th {
   }
     .FormulaVariable.black {
       color: #000000;
-  }
   }
 
 .Restart {
@@ -274,7 +275,21 @@ th {
   .FormBox {
     margin: 30px auto;
   }
-
+  .PaymentPage .FormBox {
+    margin-bottom: 20px;
+    margin-top: 60px;
+    min-width: auto;
+  }
+  .Formula {
+    font-size: 16px;
+  }
+  .Formula--media {
+    display: block;
+  }
+  .VerifyButton{
+    width: 140px;
+    margin-bottom: 10px;
+  }
   h1 {
     font-size: 30px;
   }
